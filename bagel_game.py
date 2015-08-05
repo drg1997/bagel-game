@@ -1,16 +1,33 @@
 #Modules
 import random
+#Defined Factors (Factors have to be predefined, but turned off, if they are to work)
+lazy = False
+guilty = False
+bad_liar = False
+brave = False
+coward = False
+racist = False
+indecisive = False
+eureka = False
+amnesia = False
+broke = False
+end = False
 #################      KEY      ########################
 # A group of octothorpres (#############) signifies the end of a main descision
 # A comment saying (#END OF THIS PATH) signifies the end of a subdescision
-# any code between two #FACTOR# marks, a factor may or may not have an effect
+# any code between two #FACTOR# marks, a factor may or may not have an effect depending of factors
+# any code between two #interphase# marks is in the interphase between two main descisions and only comes into play for certain cenarios, not all
 
 #Introduction of the game
-print "-----------------------------------------------------"
+print "\n\n"
+print "------------------------------------"
 print "The Bagel Project Interactive Game"
-print "-----------------------------------------------------"
-print "for multiple option questions, enter the number of the response you prefer"
-print "HINT: Choosing one of the options will make for a more interesting story"
+print "------------------------------------"
+print "\n\n"
+print "At any point, type HELP for help"
+#HELP STUFF
+#print "for multiple option questions, enter the number of the response you prefer"
+#print "HINT: Choosing one of the options will make for a more interesting story"
 
 
 
@@ -89,6 +106,7 @@ elif pass_time == "2":
 		racist = True#END OF THIS PATH
 	else:
 		print "Maybe thats a better idea"
+		indecisive = True
 		print "You eventually head back to the lab"#END OF THIS PATH
 
 elif pass_time == "3":
@@ -124,18 +142,59 @@ elif pass_time == "3":
 		print "\nForgetting......"
 		eureka = False
 elif pass_time == "4":
-	print ""
+	print "\nGood choice"
+	print "." * 10#END OF PATH
 
 else:
-	print ""
+	print "\nI guess that's one way to pass the time...."
 
 #############
 
-	#The lab mates find you on the floor if eureka = False
-	#if eureka_what_do == "3"
-		#print "You must have hit your head on a table on the way down"
+#Interphase#
+if pass_time == "2":
+	print "\nOn your way back to the lab, a mugger holds you at gunpoint."
+	if brave == True:
+		print "You bravely punch the gun out of his hand and knock him out cold.  Then you call the cops, steal HIS money, and continue making your way back to the lab."
+	elif coward == True:
+		print '"Don\'t hurt me!" you cry.  "Just take my money and go!"  The mugger takes your money and runs.  You dust yourself off, and continue making your way back to the lab.'
+		broke = True
+	elif racist == True:
+		print '"You can\'t mug me!" you say.  "You\'re just a substrate!"'
+		print "The mugger, annoyed with your prejudice, mugs you anyway, and stabs you for good measure."
+		print 'With your last dying breath, you scream "PRODUCT POWER!"'
+		end = True
+	elif indecisive == True:
+		print "While you're trying to figure out what to do, the mugger takes all your money."
+		broke == True
+#Interphase#
+
 #if guilty == True:
 	#Cops come in looking for culprit by interrogating
 	#25% chance they find out its you
 	#75% chance if badliar is True
 #FACTOR#
+
+
+#Third main descision: When the lab mates get there
+#FACTOR#
+if amnesia == True:
+	if eureka_what_do == "3":
+		print "You must have hit your head on a table on the way down"
+	print '\n"Hello?  HELLO?  ARE YOU AWAKE?"'
+	print "You slowly start to get up..."
+	print "Your head hurts"
+	print "What happened?"
+	print "You feel like you forgot something..."
+#FACTOR#
+
+
+
+
+
+
+
+#ENDING
+if end == True:
+	pay_again = raw_input("Would you like to play again?\n> ").lower()
+	#if play_again == "yes":
+		#Figure out how the fuck to start over
