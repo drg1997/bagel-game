@@ -1,3 +1,5 @@
+#Modules
+import random
 #################      KEY      ########################
 # A group of octothorpres (#############) signifies the end of a main descision
 # A comment saying (#END OF THIS PATH) signifies the end of a subdescision
@@ -57,7 +59,7 @@ if pass_time == "1":
 	elif tryp_what_do == "3":
 		print "\nThat's risky.  There is an explosion at the Transcriptic factory.  The police are searching for suspects.  Better lay low for know."
 		guilty = True
-		blame = True#END OF THIS PATH
+		bad_liar = True#END OF THIS PATH
 	else:
 		print "\nSure, I guess, that's another viable option"#END OF THIS PATH
 
@@ -90,8 +92,37 @@ elif pass_time == "2":
 		print "You eventually head back to the lab"#END OF THIS PATH
 
 elif pass_time == "3":
-	print ""
+	print "\nYou take a stroll through the lab.  Suddenly, you come to a realization!  It's so simple!  How to perfectly engineer an enzyme to do whatever you want!  What do you do?"
+	eureka = True
+	print "1. Do a happy dance!"
+	print '2. Shout "Eureka!"'
+	print "3. Make it rain with pre-cut tube seals"
+	print "4. All of the above"
+	eureka_what_do = raw_input("> ")
 
+	if eureka_what_do == "1" or eureka_what_do == "4":
+		print "\nWhile doing your happy dance, you proceed to knock over a bottle of TB which falls on your head, knocking you unconscious."
+		prob_amnesia = random.uniform(1, 10)
+		if prob_amnesia >= 5:
+			print "You wake up quickly.  Thank god you remember your eureka moment!  Whew, that was a close one"
+		else:
+			eureka = False
+			amnesia = True#END OF PATH
+	elif eureka_what_do == "2":
+		print "\nThe iGEM team tells you to shut up but you dont care!  You have just solved all of their problems for them!  I'm sure they'll be thrilled to find out that all of their hard work has been for nothing."
+		#END OF PATH
+	elif eureka_what_do == "3":
+		print "\nYou start making it rain.  Unfortunately, you faint at the sight of blood and the tube seals are giving you paper cuts."
+		print "You pass out..."
+		if prob_amnesia >= 5:
+			print "You wake up quickly.  Thank god you remember your eureka moment!  Whew, that was a close one"
+		else:
+			eureka = False
+			amnesia = True#END OF PATH
+	else:
+		print "You ovbiously don't seem very excited.  I guess you dont need to know the secret to enzyme engineering"
+		print "\nForgetting......"
+		eureka = False
 elif pass_time == "4":
 	print ""
 
@@ -99,3 +130,12 @@ else:
 	print ""
 
 #############
+
+	#The lab mates find you on the floor if eureka = False
+	#if eureka_what_do == "3"
+		#print "You must have hit your head on a table on the way down"
+#if guilty == True:
+	#Cops come in looking for culprit by interrogating
+	#25% chance they find out its you
+	#75% chance if badliar is True
+#FACTOR#
