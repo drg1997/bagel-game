@@ -12,6 +12,7 @@ eureka = False
 amnesia = False
 broke = False
 end = False
+cautious = False
 #################      KEY      ########################
 # A group of octothorpres (#############) signifies the end of a main descision
 # A comment saying (#END OF THIS PATH) signifies the end of a subdescision
@@ -23,12 +24,26 @@ print "\n\n"
 print "------------------------------------"
 print "The Bagel Project Interactive Game"
 print "------------------------------------"
-print "\n\n"
+print "\n"
 print "At any point, type HELP for help"
 #HELP STUFF
 #print "for multiple option questions, enter the number of the response you prefer"
 #print "HINT: Choosing one of the options will make for a more interesting story"
 
+print "\n\nWhat is your name?"
+name = raw_input("> ")
+print "Are you ready to begin %s?" % name
+ready_begin = raw_input("> ").lower()
+#This makes it so that if Ryan is playing, Alex is the overseer
+if name.lower() == "ryan":
+	overseer = "Alex"
+else:
+	overseer = "Ryan"
+
+if ready_begin == "no":
+	print "\nWell that's too bad!"
+if ready_begin != "yes" and ready_begin != "no":
+	print "\nI'll just assume that means yes."
 
 
 #First Main Descision: Whether or not to go to lab
@@ -72,7 +87,8 @@ if pass_time == "1":
 		print "\nThere is an explosion at the Transcriptic factory.  The police are searching for suspects.  Better lay low for now."
 		guilty = True#END OF THIS PATH
 	elif tryp_what_do == "2":
-		print "\nGood, idea.  Better to play it safe."#END OF THIS PATH
+		print "\nGood, idea.  Better to play it safe."
+		cautious = True#END OF THIS PATH
 	elif tryp_what_do == "3":
 		print "\nThat's risky.  There is an explosion at the Transcriptic factory.  The police are searching for suspects.  Better lay low for know."
 		guilty = True
@@ -175,17 +191,34 @@ if pass_time == "2":
 #FACTOR#
 
 
-#Third main descision: When the lab mates get there
+#Third main descision: Foldit Meeting, lab mates arrive
 #FACTOR#
 if amnesia == True:
-	if eureka_what_do == "3":
-		print "You must have hit your head on a table on the way down"
-	print '\n"Hello?  HELLO?  ARE YOU AWAKE?"'
+	print '\n"Hello?  HELLO?  %s, ARE YOU AWAKE?"' % name.capitalize()
 	print "You slowly start to get up..."
 	print "Your head hurts"
 	print "What happened?"
 	print "You feel like you forgot something..."
+	print '\n"Are you okay?" asks %s.  "It looks like you passed out."' % overseer
+	if eureka_what_do == "1" or eureka_what_do == "4":
+		print '"Yeah, I\'m fine" you say.'
+		print '"Well it looks like you spilled TB all over the place." he says.'
+		print '"After you clean this up, come over to the intern room.  Were having a meeting."'
+	if eureka_what_do == "3":
+		print "You must have hit your head on a table or something"
+		print '"Yeah, I\'m fine" you say.'
+		print '"That\'s good, come over to the intern room.  Were having a meeting."'
 #FACTOR#
+print "\nAll the interns start filing in."
+print '"So there\'s some interesting news." %s says.' % overseer
+print '"This morning, there was an explosion at the Transcriptic factory.  Apparently, someone tried to order a mutant that was half tryptophan, and the energy level was so ridiculously high, that the transcriptic computers exploded"  Continues %s.' % overseer
+print '"Thankfully, no one was hurt although the people at Transcriptic are upset.  They plan to press charges against anyone who caused this catastrophe"'
+if guilty == True:
+	print "\nYou start to sweat a little..."
+print '\n"They have traced the order from this lab"'
+if guilty == True:
+	print "\nYou start to sweat a lot..."
+	print '"%s, are you okay?" asks %s' % (name, overseer)
 
 
 
@@ -195,6 +228,6 @@ if amnesia == True:
 
 #ENDING
 if end == True:
-	pay_again = raw_input("Would you like to play again?\n> ").lower()
+	pay_again = raw_input("\n\nWould you like to play again?\n> ").lower()
 	#if play_again == "yes":
 		#Figure out how the fuck to start over
